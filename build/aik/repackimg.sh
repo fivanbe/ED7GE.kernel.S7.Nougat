@@ -274,6 +274,8 @@ if [ -f split_img/*-tailtype ]; then
   esac;
 fi;
 
+echo SEANDROIDENFORCE » image-new.img
+
 echo "Done!";
 exit 0;
 
