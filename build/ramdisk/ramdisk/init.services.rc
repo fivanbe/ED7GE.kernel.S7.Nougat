@@ -1,0 +1,15 @@
+# Copyright (C) 2012 The Android Open Source Project
+#
+# IMPORTANT: Do not create world writable files or directories.
+# This is a common source of Android security bugs.
+#
+
+on boot
+    exec u:r:su:s0 root root -- /sbin/ed7ge.sh
+
+
+on property:sys.boot_completed=1
+    exec u:r:su:s0 root root -- /sbin/init_d.sh
+    exec u:r:su:s0 root root -- /sbin/wakelock.sh
+
+
