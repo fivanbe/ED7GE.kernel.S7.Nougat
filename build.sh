@@ -36,16 +36,16 @@ echo ""
 read -p "Seleccione (1) S7 flat ó (2) S7 Edge? " prompt
 
 if [ $prompt == "1" ]; then
-    export MODEL=G930
+    export MODEL=S7.flat
     KERNEL_DEFCONFIG=fivanbe-herolte_defconfig
     echo "S7 Flat G930F Seleccionado"
 else [ $prompt == "2" ]
-    export MODEL=G935
+    export MODEL=S7.edge
     KERNEL_DEFCONFIG=fivanbe-hero2lte_defconfig
     echo "S7 Edge G935F Seleccionado"
 fi
 
-export K_VERSION="v1.7"
+export K_VERSION="v1.8"
 export KERNEL_VERSION="ED7GE.kernel.$MODEL.$K_VERSION"
 export REVISION="RC"
 export KBUILD_BUILD_VERSION="1"
@@ -94,13 +94,13 @@ FUNC_BUILD_DTB()
 		exit 1
 	}
 	case $MODEL in
-	G930)
+	S7.flat)
 		DTSFILES="exynos8890-herolte_eur_open_00 exynos8890-herolte_eur_open_01
 				exynos8890-herolte_eur_open_02 exynos8890-herolte_eur_open_03
 				exynos8890-herolte_eur_open_04 exynos8890-herolte_eur_open_08
 				exynos8890-herolte_eur_open_09"
 		;;
-	G935)
+	S7.edge)
 		DTSFILES="exynos8890-hero2lte_eur_open_00 exynos8890-hero2lte_eur_open_01
 				exynos8890-hero2lte_eur_open_03 exynos8890-hero2lte_eur_open_04
 				exynos8890-hero2lte_eur_open_08"
@@ -147,10 +147,10 @@ FUNC_BUILD_RAMDISK()
 	cd temp
 
 	case $MODEL in
-	G935)
+	S7.edge)
 		echo "Ramdisk para G935"
 		;;
-	G930)
+	S7.flat)
 		echo "Ramdisk para G930"
 		sed -i 's/G935/G930/g' ramdisk/default.prop
 		sed -i 's/hero2/hero/g' ramdisk/default.prop
