@@ -45,7 +45,7 @@ else [ $prompt == "2" ]
     echo "S7 Edge G935F Seleccionado"
 fi
 
-export K_VERSION="v1.9"
+export K_VERSION="v2.0"
 export KERNEL_VERSION="ED7GE.kernel.$MODEL.$K_VERSION"
 export REVISION="RC"
 export KBUILD_BUILD_VERSION="1"
